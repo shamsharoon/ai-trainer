@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Interview Trainer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+      <h1 class="text-2xl font-bold">AI Interview Trainer</h1>
+      <form id="chat-form" class="mt-4">
+        <textarea
+          id="chat-input"
+          class="border p-2 w-full"
+          placeholder="Type your question..."
+        ></textarea>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 mt-2">
+          Send
+        </button>
+      </form>
+      <div id="chat-logs" class="mt-4 bg-white p-4 rounded shadow"></div>
+    </div>
+
+    <script>
+      const form = document.getElementById("chat-form");
+      const chatLogs = document.getElementById("chat-logs");
+
+      form.onsubmit = async (e) => {
+        e.preventDefault();
+        const input = document.getElementById("chat-input").value;
+
+        // Fetch data from the /hello endpoint
+        const response = await fetch("/hello", {
+          method: "GET",
+        });
+
+        const data = await response.text(); // Expecting plain text response
+        chatLogs.innerHTML += `<p><strong>User:</strong> ${input}</p>`;
+        chatLogs.innerHTML += `<p><strong>Bot:</strong> ${data}</p>`;
+        document.getElementById("chat-input").value = "";
+      };
+    </script>
+  </body>
+</html>
