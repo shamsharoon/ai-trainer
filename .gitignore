@@ -1,1 +1,15 @@
-./frontend
+# Ignore node_modules in both frontend and backend
+node_modules/
+
+# Ignore Python virtual environments
+venv/
+
+# Ignore .env files
+*.env
+
+# Ignore SQLite database files
+*.sqlite3
+
+# Ignore other common files
+__pycache__/
+*.log
