@@ -2,6 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),  # Index page
-    path('hello', views.helloWorld, name='hello'),  # Hello endpoint
+    path('csrf/', views.get_csrf_token, name='csrf_token'),
+    path('start', views.start_interview, name='start_interview'),
 ]

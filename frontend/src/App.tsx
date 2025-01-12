@@ -1,12 +1,17 @@
 import React from "react";
-import Chat from "./components/Chat.tsx";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Onboard from "./components/Onboard.tsx";
+import MockInterview from "./components/MockInterview.tsx";
 
-const App: React.FC = () => {
+function App() {
   return (
-    <div className="container mx-auto">
-      <Chat />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Onboard />} />
+        <Route path="/mockInterview" element={<MockInterview />} />
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;
